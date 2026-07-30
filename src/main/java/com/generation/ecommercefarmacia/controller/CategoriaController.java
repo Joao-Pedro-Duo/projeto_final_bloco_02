@@ -58,6 +58,7 @@ public class CategoriaController {
 		return ResponseEntity.ok(categoriaRepository.findAllByTipoContainingIgnoreCase(tipo));	
 	}
 	
+	
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED)
@@ -94,6 +95,13 @@ public class CategoriaController {
 		
 	}
 	
+	// Método Personalizado - Uma Busca por descricao da Categoria
+	
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<Categoria>> getByDescricao(@PathVariable String descricao){
+		
+		return ResponseEntity.ok(categoriaRepository.findAllByDescricaoContainingIgnoreCase(descricao));	
+	}
 	
 	
 }

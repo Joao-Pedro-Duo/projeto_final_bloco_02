@@ -11,5 +11,9 @@ import com.generation.ecommercefarmacia.model.Categoria;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 	public List<Categoria> findAllByTipoContainingIgnoreCase(String tipo);
+	
+	
+	// Método Personalizado - Uma Busca por todas as Categorias cujo a descrição seja igual a descrição digitada
+	public List<Categoria> findAllByDescricaoContainingIgnoreCase(String descricao);
 
 }

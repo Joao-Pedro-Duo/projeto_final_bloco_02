@@ -1,5 +1,6 @@
 package com.generation.ecommercefarmacia.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,6 +107,21 @@ public class ProdutoController {
 		
 		// DELETE FROM tb_produtos WHERE id = ?;
 		
+	}
+	
+	// Método Personalizado - Consulta pelo preço maior do que o preço digitado em ordem crescente
+	
+	@GetMapping("/preco_maior/{preco}")
+	public ResponseEntity<List<Produto>> getAllPrecoMaiorQue(@PathVariable BigDecimal preco){ 
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoGreaterThanOrderByPreco(preco));
+	}
+			
+			
+	// Método Personalizado - Consulta pelo preço menor do que o preço digitado em ordem decrescente
+	
+	@GetMapping("/preco_menor/{preco}")
+	public ResponseEntity<List<Produto>> getAllPrecoMenorQue(@PathVariable BigDecimal preco){ 
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoLessThanOrderByPrecoDesc(preco));
 	}
 	
 	
